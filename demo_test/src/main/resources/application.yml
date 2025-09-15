@@ -1,0 +1,34 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+  application:
+    name: demo
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    # 포트: 4444 -> 3306, 데이터베이스 이름: testdb -> demo
+    url: jdbc:mariadb://localhost:22222/testdb
+    username: root
+    password: 1234
+    hikari: # DB Pool Size
+      minimum-idle: 2
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      #ddl option: none || validate || update | create | create-drop
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+server:
+  port: 9999
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
